@@ -6,7 +6,9 @@
 package negocio;
 import java.util.ArrayList;
 
-import capaDatosEtiquetas.*;
+
+import datos.*;
+import persistencia.*;
 
 /**
  *
