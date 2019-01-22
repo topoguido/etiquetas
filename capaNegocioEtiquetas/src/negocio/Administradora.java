@@ -5,8 +5,6 @@
  */
 package negocio;
 import java.util.ArrayList;
-
-
 import datos.*;
 import persistencia.*;
 
@@ -16,7 +14,7 @@ import persistencia.*;
  */
 public class Administradora {
     
-    private ArrayList<clsF5660005> etiquetas = new ArrayList();
+    private ArrayList<Object> etiquetas = new ArrayList<>();
     
      public ArrayList getEtiqueta(String etiqueta) {
          
