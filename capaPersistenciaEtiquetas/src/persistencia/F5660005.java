@@ -15,12 +15,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import com.microsoft.sqlserver.jdbc.*;
+
+//import com.microsoft.sqlserver.jdbc.*;
 public class F5660005 {
 
-	/*String host="SBRSQL31251";
-	String user="GE0022";
-	String password="topoguido001";*/
 
 	
 
@@ -32,38 +30,38 @@ public class F5660005 {
         try{
 
                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-               /*Connection co = DriverManager.getConnection(host, user, password);*/
                String connectionUrl = "jdbc:sqlserver://SBRSQL31251;database=JDE_CRP;integratedSecurity=true";
-               /*String connectionUrl = "jdbc:sqlserver://;servername=SBRSQL31251;integratedSecurity=true;authenticationScheme=JavaKerberos";*/
                Connection conect = DriverManager.getConnection(connectionUrl);
                
-              /* SQLServerDataSource ds = new SQLServerDataSource();  
-               ds.setUser("soam\\ge0022");  
-               ds.setPassword("topoguido001");  
-               ds.setServerName("SBRSQL31251");  
-               ds.setPortNumber(1433);
-               ds.setDatabaseName("JDE_CRP");  
-               Connection conect = ds.getConnection(); */
-               
                st = conect.createStatement();
-
-               String sentencia="SELECT * FROM CRPDTA.F5660005 WHERE ETAA12 = ('"+etiqueta+"')";
+               
+               String sentencia="SELECT * FROM CRPDTA.F5660005 WHERE ETAA12 LIKE ('"+etiqueta+"%')";
                res = st.executeQuery(sentencia);
 
                while( res.next())
                {
-                   resultado.add(res.getString("ETAA12"));
-                   resultado.add(res.getString("ETLITM"));
-                   resultado.add(res.getString("ETUSER"));
-                   resultado.add(res.getString("ETADDJ"));
+                   
+            	   /*resultado.add(0,res.getString("ETAA12"));
+                   resultado.add(1,res.getString("ETLITM"));
+                   resultado.add(2,res.getString("ETUSER"));
+                   resultado.add(3,res.getString("ETADDJ"));*/
+            	   resultado.add(res);
                    
                }
-            }catch(ClassNotFoundException ex){
-                    ex.printStackTrace();
-                }catch(SQLException ex)
+               
+               st.close();
+               res.close();
+            }
+        catch(ClassNotFoundException ex)
+        {
+                  ex.printStackTrace();
+           }
+        	catch(SQLException ex)
                 {
                     ex.printStackTrace();
                 }
+       
+        
         return resultado;
    }
 
