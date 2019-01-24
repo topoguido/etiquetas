@@ -16,15 +16,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import datos.clsF5660005;
+
 //import com.microsoft.sqlserver.jdbc.*;
 public class F5660005 {
 
 
 	
 
- public ArrayList<Object> getEtiqueta(String etiqueta)
+ public ArrayList<clsF5660005> getEtiqueta(String etiqueta)
    {
-        ArrayList<Object>  resultado = new ArrayList<>();
+        ArrayList<clsF5660005>  resultado = new ArrayList<>();
         Statement st;
         ResultSet res;
         try{
@@ -40,12 +42,13 @@ public class F5660005 {
 
                while( res.next())
                {
-                   
-            	   /*resultado.add(0,res.getString("ETAA12"));
-                   resultado.add(1,res.getString("ETLITM"));
-                   resultado.add(2,res.getString("ETUSER"));
-                   resultado.add(3,res.getString("ETADDJ"));*/
-            	   resultado.add(res);
+            	   clsF5660005 fila = new clsF5660005();
+            	   fila.setETAA12(res.getString("ETAA12"));
+            	   fila.setETLITM(res.getString("ETLITM"));
+            	   fila.setETUSER(res.getString("ETUSER"));
+            	   fila.setETADDJ(res.getLong("ETADDJ"));
+            	   
+                   resultado.add(fila);
                    
                }
                

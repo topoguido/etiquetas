@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import datos.clsF5660005;
 import negocio.Administradora;
 
 public class Main {
@@ -8,35 +9,23 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		Administradora admin = new Administradora();
-		ArrayList<Object> ls = new ArrayList<>(); 
+		ArrayList<clsF5660005> ls = new ArrayList<>(); 
 		
 		ls = admin.getEtiqueta("H205000");
-		/*
+		
 		if (!ls.isEmpty())
 		{
 			
 			//System.out.println(ls);
-			Iterator<Object> iter = ls.iterator();
+			Iterator<clsF5660005> iter = ls.iterator();
 		    while (iter.hasNext()) 
 		    {
-		         System.out.println(iter.next());
+		        clsF5660005 var =  iter.next(); 
+		    	System.out.println(var.getETAA12() + "|" + var.getETLITM() + "|" + var.getETUSER() + "|" + var.getETADDJ() );		        
 		         
 		    }
-		}*/
-		/*for (Object str:ls)
-		{
-			System.out.println(ls);
-			
-		}*/
-		int i =0;
-		Iterator<Object> it = ls.iterator();
-		while(it.hasNext())
-		{
-			it.next();
-			System.out.println(it.getClass());
-			i++;
-			
 		}
+	
 		
 		
 	}
